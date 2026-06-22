@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FoodBridge</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><i class="fas fa-leaf"></i> FoodBridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+                <li><a href="impact.html" class="nav-link">Impact</a></li>
+                <li><a href="awareness.html" class="nav-link">Learn</a></li>
+                <li><a href="partner.html" class="nav-link">Get Involved</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="donate.html" class="nav-btn donate-btn">Donate Food</a>
+                <a href="request.html" class="nav-btn request-btn">Request Food</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you. Reach out anytime!</p>
+    </section>
+
+    <!-- Contact Container -->
+    <section class="contact-container">
+        <div class="contact-content">
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2>Send us a Message</h2>
+                <form id="contactForm" action="/api/contact" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option  value="">Select a subject</option>
+                            <option  value="donation">Food Donation Inquiry</option>
+                            <option  value="request">Food Request</option>
+                            <option  value="volunteer">Volunteer Inquiry</option>
+                            <option  value="partnership">Partnership Opportunity</option>
+                            <option  value="feedback">Feedback/Suggestion</option>
+                            <option  value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Please tell us how we can help" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info-section">
+                <!-- Direct Contact -->
+                <div class="contact-box">
+                    <h3><i class="fas fa-phone"></i> Phone</h3>
+                    <p class="contact-detail">+91 98765 43210</p>
+                    <p class="contact-subtext">Mon-Fri, 9 AM - 6 PM IST</p>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-box">
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p class="contact-detail">info@foodbridge.org</p>
+                    <p class="contact-subtext">We'll respond within 24 hours</p>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="contact-box">
+                    <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+                    <p class="contact-detail">+91 98765 43210</p>
+                    <p class="contact-subtext">For urgent matters</p>
+                </div>
+
+                <!-- Office Address -->
+                <div class="contact-box">
+                    <h3><i class="fas fa-map-marker-alt"></i> Office Address</h3>
+                    <p class="contact-detail">123 Green Street</p>
+                    <p class="contact-detail">Bandra, Mumbai 400050</p>
+                    <p class="contact-detail">Maharashtra, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Map -->
+    <section class="map-section">
+        <h2>Visit Us</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.8920526825607!2d72.82693!3d19.05348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c92f8d5a5555%3A0x1234567890ab!2sBandra%2C%20Mumbai%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Operating Hours -->
+    <section class="hours-section">
+        <h2>Operating Hours</h2>
+        <div class="hours-grid">
+            <div class="hours-card">
+                <h3>Weekdays</h3>
+                <p>Monday - Friday</p>
+                <p class="time">9:00 AM - 6:00 PM</p>
+            </div>
+            <div class="hours-card">
+                <h3>Saturdays</h3>
+                <p>Saturday</p>
+                <p class="time">10:00 AM - 4:00 PM</p>
+            </div>
+            <div class="hours-card">
+                <h3>Emergencies</h3>
+                <p>24/7 Hotline Available</p>
+                <p class="time">+91 98765 43210</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="contact-faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What's the best way to contact you for urgent matters?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>For urgent matters, please call us at +91 98765 43210 or use WhatsApp. Our team responds to calls within 15 minutes during business hours.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long does it take to get a response to my inquiry?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>We aim to respond to all inquiries within 24 hours. For urgent matters, we respond within 2 hours during business hours (9 AM - 6 PM IST).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can I visit your office?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! You can visit our office during business hours (Mon-Fri: 9 AM - 6 PM, Sat: 10 AM - 4 PM). We're located at 123 Green Street, Bandra, Mumbai. It's recommended to call ahead to schedule a meeting.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you have regional offices?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Currently, we operate from our main office in Mumbai. However, we have partnerships and volunteers across different areas. Contact us to learn about services in your location.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How can I provide feedback or report an issue?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>You can send us feedback through the contact form on this page, email us directly, or call our hotline. We take all feedback seriously and use it to improve our services.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can I request a speaker for an event?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! We regularly speak at events about food waste management and social entrepreneurship. Contact us with your event details, and we'll let you know about availability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <h2>Follow Us on Social Media</h2>
+        <p>Stay updated with our latest news, success stories, and initiatives</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon facebook" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon twitter" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon instagram" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon linkedin" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-icon youtube" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@foodbridge.org</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Green Street, Mumbai, India</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="impact.html">Our Impact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FoodBridge. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Contact Container */
+        .contact-container {
+            padding: 2rem 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Form */
+        .contact-form-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form-section h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(45, 156, 219, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(45, 156, 219, 0.3);
+        }
+
+        /* Contact Info */
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-box {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .contact-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-detail {
+            color: var(--text-color);
+            font-weight: 500;
+            margin: 0.25rem 0;
+        }
+
+        .contact-subtext {
+            color: #999;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 2rem 1rem;
+            background-color: var(--light-color);
+        }
+
+        .map-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hours Section */
+        .hours-section {
+            padding: 2rem 1rem;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hours-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hours-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .hours-card p {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            margin: 0.25rem 0;
+        }
+
+        .hours-card .time {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-top: 0.75rem;
+        }
+
+        /* FAQ Accordion */
+        .contact-faq {
+            padding: 2rem 1rem;
+            background-color: var(--light-color);
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem;
+            background: white;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: var(--light-color);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.25rem 1.25rem;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .social-section p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon.facebook {
+            background-color: #1877f2;
+        }
+
+        .social-icon.twitter {
+            background-color: #1da1f2;
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-icon.linkedin {
+            background-color: #0a66c2;
+        }
+
+        .social-icon.youtube {
+            background-color: #ff0000;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-question {
+                font-size: 0.95rem;
+                padding: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 1rem 1rem;
+            }
+        }
+    </style>
+
+    <script src="forms.js"></script>
+</body>
+</html>

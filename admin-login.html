@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - FoodBridge</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="login-page">
+    <main class="login-shell">
+        <section class="login-card" aria-labelledby="loginTitle">
+            <p class="eyebrow">Restricted access</p>
+            <h1 id="loginTitle">Admin Login</h1>
+            <p class="subtitle">Sign in to review feedback, submissions, and uploaded files.</p>
+
+            <div id="loginMessage" class="error-banner" hidden></div>
+
+            <form class="login-form" action="/api/admin/login" method="POST">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" autocomplete="username" required>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="current-password" required>
+                </div>
+
+                <div class="login-actions">
+                    <button class="button" type="submit">Sign in</button>
+                    <a class="ghost-link" href="/">Back to site</a>
+                </div>
+            </form>
+
+            <p class="login-note">Default local login: <strong>admin</strong> / <strong>FoodBridge@123</strong>. If you set custom <code>FOODBRIDGE_ADMIN_USER</code> or <code>FOODBRIDGE_ADMIN_PASSWORD</code> values, use those instead.</p>
+        </section>
+    </main>
+
+    <script src="admin-login.js"></script>
+</body>
+</html>

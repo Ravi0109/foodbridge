@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Food - FoodBridge</title>
+    <link rel="stylesheet" href="request.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><i class="fas fa-leaf"></i> FoodBridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+                <li><a href="impact.html" class="nav-link">Impact</a></li>
+                <li><a href="awareness.html" class="nav-link">Learn</a></li>
+                <li><a href="partner.html" class="nav-link">Get Involved</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="donate.html" class="nav-btn donate-btn">Donate Food</a>
+                <a href="request.html" class="nav-btn request-btn">Request Food</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Request Food</h1>
+        <p>Get the food your organization needs through our verified donor network</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="request-container">
+        <div class="request-content">
+            <!-- Registration Section -->
+            <div class="recipient-section">
+                <h2>Recipient Registration</h2>
+                <p class="section-intro">Register your organization to access our food network and make requests.</p>
+                
+                <form id="recipientForm" action="/api/requests" method="POST" enctype="multipart/form-data">
+                    <!-- Organization Details -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-building"></i> Organization Details</h3>
+                        <div class="form-group">
+                            <label for="orgName">Organization Name *</label>
+                            <input type="text" id="orgName" name="orgName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="orgType">Organization Type *</label>
+                            <select id="orgType" name="orgType" required>
+                                <option value="">Select organization type</option>
+                                <option value="ngo">NGO / Non-profit</option>
+                                <option value="shelter">Homeless Shelter</option>
+                                <option value="kitchen">Community Kitchen</option>
+                                <option value="school">School / Educational Institution</option>
+                                <option value="hospital">Hospital / Medical Facility</option>
+                                <option value="prison">Prison / Correctional Facility</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="regNumber">Registration Number / ID *</label>
+                            <input type="text" id="regNumber" name="regNumber" placeholder="e.g., NGO Registration Number" required>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Contact Information</h3>
+                        <div class="form-group">
+                            <label for="contactName">Contact Person Name *</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address *</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number *</label>
+                            <input type="tel" id="contactPhone" name="contactPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickupAddress">Pickup/Delivery Address *</label>
+                            <textarea id="pickupAddress" name="pickupAddress" rows="2" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Organizational Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-info-circle"></i> Organizational Information</h3>
+                        <div class="form-group">
+                            <label for="beneficiaries">Estimated Beneficiaries *</label>
+                            <input type="number" id="beneficiaries" name="beneficiaries" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="foodNeeds">Primary Food Needs *</label>
+                            <select id="foodNeeds" name="foodNeeds" required>
+                                <option value="">Select primary need</option>
+                                <option value="cooked-meals">Cooked Meals</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="produce">Fresh Produce</option>
+                                <option value="packaged">Packaged Foods</option>
+                                <option value="any">Any Available Food</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Organization Description *</label>
+                            <textarea id="description" name="description" rows="3" placeholder="Tell us about your organization and the people you serve" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Document Upload -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-file-upload"></i> Verification Documents</h3>
+                        <div class="form-group">
+                            <label for="registration">Registration Certificate / License *</label>
+                            <input type="file" id="registration" name="registration" accept=".pdf,.jpg,.jpeg,.png" required>
+                            <small>Upload your organization's registration certificate or license (PDF, JPG, PNG)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="proof">Proof of Work (Photo/Document) *</label>
+                            <input type="file" id="proof" name="proof" accept=".pdf,.jpg,.jpeg,.png" required>
+                            <small>Upload a photo or document showing your organization's work</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Register & Apply</button>
+                </form>
+            </div>
+
+            <!-- Browse & Request Section -->
+            <div class="browse-section">
+                <h2>Browse Available Donations</h2>
+                <p class="section-intro">View active food donations in your area and make requests.</p>
+
+                <!-- Filters -->
+                <div class="filters-box">
+                    <h3>Filter Donations</h3>
+                    <div class="filter-grid">
+                        <div class="filter-group">
+                            <label for="filterType">Food Type</label>
+                            <select id="filterType">
+                                <option value="">All Types</option>
+                                <option value="cooked">Cooked Food</option>
+                                <option value="packaged">Packaged</option>
+                                <option value="produce">Fresh Produce</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="filterLocation">Location</label>
+                            <input type="text" id="filterLocation" placeholder="Enter area/city">
+                        </div>
+                        <div class="filter-group">
+                            <label for="filterDate">Date</label>
+                            <input type="date" id="filterDate">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Donations List -->
+                <div class="donations-list">
+                    <h3>Active Donations</h3>
+                    
+                    <div class="donation-item" data-food-type="produce" data-location="bandra mumbai" data-available-date="2026-06-17">
+                        <div class="donation-header">
+                            <h4><i class="fas fa-apple-alt"></i> Fresh Vegetables Mix</h4>
+                            <span class="donor-badge">Metro Market</span>
+                        </div>
+                        <div class="donation-details">
+                            <p><strong>Quantity:</strong> 25 kg</p>
+                            <p><strong>Location:</strong> Bandra, Mumbai</p>
+                            <p><strong>Available Until:</strong> Today, 6 PM</p>
+                            <p><strong>Description:</strong> Mixed seasonal vegetables - tomatoes, onions, peppers, carrots. Fresh and packaged today.</p>
+                        </div>
+                        <button type="button" class="request-donation-btn">Request This Food</button>
+                    </div>
+
+                    <div class="donation-item" data-food-type="packaged" data-location="andheri mumbai" data-available-date="2026-06-17">
+                        <div class="donation-header">
+                            <h4><i class="fas fa-bread-slice"></i> Baked Goods</h4>
+                            <span class="donor-badge">Fresh Bakery</span>
+                        </div>
+                        <div class="donation-details">
+                            <p><strong>Quantity:</strong> 50 items</p>
+                            <p><strong>Location:</strong> Andheri, Mumbai</p>
+                            <p><strong>Available Until:</strong> Today, 5 PM</p>
+                            <p><strong>Description:</strong> Bread, pastries, and buns from today's batch. All packaged and ready for distribution.</p>
+                        </div>
+                        <button type="button" class="request-donation-btn">Request This Food</button>
+                    </div>
+
+                    <div class="donation-item" data-food-type="cooked" data-location="dadar mumbai" data-available-date="2026-06-17">
+                        <div class="donation-header">
+                            <h4><i class="fas fa-utensils"></i> Cooked Meals</h4>
+                            <span class="donor-badge">City Restaurant</span>
+                        </div>
+                        <div class="donation-details">
+                            <p><strong>Quantity:</strong> 100 servings</p>
+                            <p><strong>Location:</strong> Dadar, Mumbai</p>
+                            <p><strong>Available Until:</strong> Today, 7 PM</p>
+                            <p><strong>Description:</strong> Rice with dal and vegetable curry. Prepared 2 hours ago, stored at proper temperature.</p>
+                        </div>
+                        <button type="button" class="request-donation-btn">Request This Food</button>
+                    </div>
+
+                    <div class="donation-item" data-food-type="packaged" data-location="powai mumbai" data-available-date="2026-06-18">
+                        <div class="donation-header">
+                            <h4><i class="fas fa-milk-glass"></i> Dairy Products</h4>
+                            <span class="donor-badge">Milk Dairy</span>
+                        </div>
+                        <div class="donation-details">
+                            <p><strong>Quantity:</strong> 30 liters</p>
+                            <p><strong>Location:</strong> Powai, Mumbai</p>
+                            <p><strong>Available Until:</strong> Tomorrow, 10 AM</p>
+                            <p><strong>Description:</strong> Fresh pasteurized milk. Expires tomorrow. Can be used for community meals.</p>
+                        </div>
+                        <button type="button" class="request-donation-btn">Request This Food</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request Confirmation Example -->
+    <section class="status-info">
+        <h2>Request Status Tracking</h2>
+        <div class="status-timeline">
+            <div class="status-step completed">
+                <div class="status-marker"><i class="fas fa-check"></i></div>
+                <h4>Request Submitted</h4>
+                <p>Your request has been registered</p>
+            </div>
+            <div class="status-step">
+                <div class="status-marker"><i class="fas fa-handshake"></i></div>
+                <h4>Confirmed</h4>
+                <p>Donor confirms the donation</p>
+            </div>
+            <div class="status-step">
+                <div class="status-marker"><i class="fas fa-truck"></i></div>
+                <h4>Pickup/Delivery</h4>
+                <p>Food is arranged for pickup</p>
+            </div>
+            <div class="status-step">
+                <div class="status-marker"><i class="fas fa-smile"></i></div>
+                <h4>Received</h4>
+                <p>Food is delivered successfully</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-footer">
+        <h2>Help Your Community Access Nutritious Food!</h2>
+        <p>Register now and connect with generous donors ready to help.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@foodbridge.org</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Green Street, Mumbai, India</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="impact.html">Our Impact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FoodBridge. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Request Container */
+        .request-container {
+            padding: 2rem 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .request-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .section-intro {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Form Styles (reuse from donate.html) */
+        .recipient-section,
+        .browse-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipient-section h2,
+        .browse-section h2 {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .form-section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(45, 156, 219, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.3rem;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(45, 156, 219, 0.3);
+        }
+
+        /* Filters */
+        .filters-box {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .filters-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            margin-bottom: 0.4rem;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Donations List */
+        .donations-list h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-item {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .donation-item:hover {
+            box-shadow: 0 4px 12px rgba(45, 156, 219, 0.2);
+        }
+
+        .donation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .donation-header h4 {
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+        }
+
+        .donor-badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .donation-details {
+            margin-bottom: 1rem;
+        }
+
+        .donation-details p {
+            margin: 0.4rem 0;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .donation-details strong {
+            color: var(--primary-color);
+        }
+
+        .request-donation-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .request-donation-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Status Timeline */
+        .status-info {
+            padding: 2rem 1rem;
+            background-color: var(--light-color);
+        }
+
+        .status-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .status-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .status-step.completed {
+            background: rgba(39, 174, 96, 0.1);
+        }
+
+        .status-marker {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+        }
+
+        .status-step.completed .status-marker {
+            background: var(--success-color);
+        }
+
+        .status-step h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .status-step p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .request-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .donation-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="forms.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - FoodBridge</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="title-block">
+                <p class="eyebrow">Local dashboard</p>
+                <h1>FoodBridge Admin</h1>
+                <p class="subtitle">Review feedback, form inputs, and uploaded files from one place.</p>
+            </div>
+            <div class="toolbar">
+                <label class="search-field" for="searchInput">
+                    <span>Search records</span>
+                    <input id="searchInput" type="search" placeholder="Name, email, message, org, role, file...">
+                </label>
+                <button id="refreshBtn" class="button" type="button">Refresh</button>
+                <a class="ghost-link" href="/admin-logout">Logout</a>
+                <a class="ghost-link" href="index.html">Back to site</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="summary-grid" id="summaryGrid" aria-label="Submission summary"></section>
+
+        <section class="section">
+            <div class="section-head">
+                <div>
+                    <h2>Submissions</h2>
+                    <p>Newest entries first. Tables stay scrollable on smaller screens.</p>
+                </div>
+                <div class="status" id="statusText">Loading...</div>
+            </div>
+            <div id="tables"></div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

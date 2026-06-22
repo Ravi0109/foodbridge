@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food - FoodBridge</title>
+    <link rel="stylesheet" href="donate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><i class="fas fa-leaf"></i> FoodBridge</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="how-it-works.html" class="nav-link">How It Works</a></li>
+                <li><a href="impact.html" class="nav-link">Impact</a></li>
+                <li><a href="awareness.html" class="nav-link">Learn</a></li>
+                <li><a href="partner.html" class="nav-link">Get Involved</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="/admin-login" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-user-shield"></i> Admin Login</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="donate.html" class="nav-btn donate-btn">Donate Food</a>
+                <a href="request.html" class="nav-btn request-btn">Request Food</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Donate Food</h1>
+        <p>Help fight hunger by sharing your surplus food with those in need</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="donate-container">
+        <div class="donate-content">
+            <div class="donor-form">
+                <h2>Food Donation Form</h2>
+                <form id="donationForm" action="/api/donations" method="POST" enctype="multipart/form-data">
+                    <!-- Section 1: Donor Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Your Information</h3>
+                        <div class="form-group">
+                            <label for="name">Full Name / Organization Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Contact Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Pickup Address *</label>
+                            <textarea id="address" name="address" rows="2" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Food Details -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-apple-alt"></i> Food Details</h3>
+                        <div class="form-group">
+                            <label for="foodType">Type of Food *</label>
+                            <select id="foodType" name="foodType" required>
+                                <option value="">Select food type</option>
+                                <option value="cooked">Cooked Food</option>
+                                <option value="packaged">Packaged Food</option>
+                                <option value="fresh-produce">Fresh Produce</option>
+                                <option value="dairy">Dairy Products</option>
+                                <option value="bakery">Bakery Items</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity (in kg or servings) *</label>
+                            <input type="text" id="quantity" name="quantity" placeholder="e.g., 10 kg or 50 servings" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Food Description *</label>
+                            <textarea id="description" name="description" rows="3" placeholder="Describe what you're donating (e.g., cooked rice with vegetables)" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date/Time *</label>
+                            <input type="datetime-local" id="expiryDate" name="expiryDate" required>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Pickup Details -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-truck"></i> Pickup Details</h3>
+                        <div class="form-group">
+                            <label for="pickupTime">Preferred Pickup Window *</label>
+                            <select id="pickupTime" name="pickupTime" required>
+                                <option value="">Select time window</option>
+                                <option value="morning">Morning (6 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                                <option value="evening">Evening (5 PM - 9 PM)</option>
+                                <option value="night">Night (9 PM - 6 AM)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pickup Method *</label>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="pickupMethod" value="our-pickup" checked>
+                                    We'll pick it up
+                                </label>
+                                <label>
+                                    <input type="radio" name="pickupMethod" value="drop-off">
+                                    I'll drop it off at nearest center
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Additional Options -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-sync"></i> Recurring Donations</h3>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="recurring" name="recurring">
+                                Schedule regular donations
+                            </label>
+                        </div>
+                        <div id="recurringOptions" style="display: none;">
+                            <div class="form-group">
+                                <label for="frequency">Frequency *</label>
+                                <select id="frequency" name="frequency">
+                                    <option value="">Select frequency</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="biweekly">Bi-weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 5: File Upload -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-camera"></i> Upload Food Photo (Optional)</h3>
+                        <div class="form-group">
+                            <label for="foodPhoto">Food Photo</label>
+                            <input type="file" id="foodPhoto" name="foodPhoto" accept="image/*">
+                            <small>Upload a photo for verification (JPG, PNG, max 5MB)</small>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Submit Donation</button>
+                </form>
+            </div>
+
+            <!-- Information Sidebar -->
+            <div class="info-sidebar">
+                <div class="info-box">
+                    <h3><i class="fas fa-check-circle"></i> Verified Donor Benefits</h3>
+                    <ul>
+                        <li>Track all your donations</li>
+                        <li>See real-time impact</li>
+                        <li>Receive donation receipts</li>
+                        <li>Tax certificate eligibility</li>
+                        <li>Monthly impact reports</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-lightbulb"></i> Tips for Donors</h3>
+                    <ul>
+                        <li>Donate food within 2 hours of preparation</li>
+                        <li>Keep food at proper temperature</li>
+                        <li>Pack in clean, sealed containers</li>
+                        <li>Include expiry date and ingredients</li>
+                        <li>Regular donations have maximum impact</li>
+                    </ul>
+                </div>
+
+                <div class="impact-preview">
+                    <h3><i class="fas fa-heart"></i> Your Impact</h3>
+                    <p>One donation of 10kg of food can:</p>
+                    <ul>
+                        <li>✓ Feed 20+ people</li>
+                        <li>✓ Save 50kg of CO₂</li>
+                        <li>✓ Save 100L of water</li>
+                        <li>✓ Impact 2-3 families</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> Can I donate leftover food from events?</h3>
+                <p>Yes! Event leftover food that's packaged properly and within the expiry window is welcome. Ensure it's been stored at proper temperature.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> Is there a cost to donate?</h3>
+                <p>No! Donating through FoodBridge is completely free. We handle logistics at no cost to you.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> How quickly will my food be picked up?</h3>
+                <p>We typically pick up food within 2-4 hours of your listing. Urgent pickups can be arranged with our support team.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-question-circle"></i> Do I get a tax receipt?</h3>
+                <p>Yes! After verification, all donations are eligible for tax deduction. We provide certificates automatically.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-footer">
+        <h2>Together, We Can Reduce Hunger & Waste!</h2>
+        <p>Start making a difference today. Your donation matters.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@foodbridge.org</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Green Street, Mumbai, India</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="impact.html">Our Impact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FoodBridge. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Donate Container */
+        .donate-container {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .donate-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Form Styles */
+        .donor-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .donor-form h2 {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(45, 156, 219, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.3rem;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0;
+        }
+
+        .radio-group input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(45, 156, 219, 0.3);
+        }
+
+        /* Sidebar */
+        .info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-box,
+        .impact-preview {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .info-box h3,
+        .impact-preview h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box ul,
+        .impact-preview ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li,
+        .impact-preview li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        .info-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        .impact-preview {
+            border-left-color: var(--success-color);
+            background: rgba(39, 174, 96, 0.1);
+        }
+
+        .impact-preview h3 {
+            color: var(--success-color);
+        }
+
+        .impact-preview li:before {
+            color: var(--success-color);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 2rem 1rem;
+            background-color: var(--light-color);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item p {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .donate-content {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="forms.js"></script>
+</body>
+</html>
